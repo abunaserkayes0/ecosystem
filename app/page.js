@@ -1,6 +1,8 @@
+import LocationDetector from "./[location]/Components/LocationDetector";
 
 export default async function Home() {
+
   return (
-    <h1>Hello World</h1>
+    <LocationDetector />
   );
 }

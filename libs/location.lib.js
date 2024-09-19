@@ -15,20 +15,39 @@ export async function getLocationLatLongList() {
         const data = await res.json();
         return data;
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
 
     }
 
 }
 
-export async function getLatLonByName(name) {
+export async function getLocationLatLonByName(name) {
     try {
         const res = await fetch(`http://localhost:3000/api/locations/${name}`)
         const data = await res.json();
         return data;
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
 
     }
 
+}
+
+export async function getResolvedLonLat(location, lat, lon) {
+    try {
+        if (lat && lon) {
+            return { lat, lon }
+        }
+        const locate = await getLocationLatLonByName(location);
+        if (locate.latitude && locate.longitude) {
+            const lat = locate.latitude;
+            const lon = locate.longitude;
+
+            return { lat, lon }
+        }
+
+    } catch (error) {
+        console.log(error.message);
+
+    }
 }

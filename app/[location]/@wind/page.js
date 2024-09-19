@@ -1,7 +1,20 @@
+import { getResolvedLonLat } from "@/libs/location.lib";
 import WindCardItem from "../Components/WindCardItem";
+import NotFound from "../Components/ui/NotFoundPage";
 
-export default function Wind({ params: { location }, searchParams: { longitude, latitude } }) {
+export default async function Weather({ params: { location }, searchParams: { latitude, longitude } }) {
+
+  const currentLocation = await getResolvedLonLat(location, latitude, longitude);
+
   return (
-    <WindCardItem lat={latitude} lon={longitude} />
+
+    currentLocation ? (
+      <WindCardItem lat={latitude} lon={longitude} />
+    ) :
+      (
+        <NotFound />
+      )
+
   );
+
 }

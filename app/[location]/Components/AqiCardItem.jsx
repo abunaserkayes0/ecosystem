@@ -6,17 +6,6 @@ export default async function AqiCardItem({lat,lon}) {
 
 const data = await getAqiData(lat,lon);
 
-const {
-  co,
-  no,
-  no2,
-  o3,
-  so2,
-  pm2_5,
-  
-}=data?.components;
-
-const {aqi}=data?.main;
 
 const getAqiValue = (aqiValue) => {
   switch (aqiValue) {
@@ -52,7 +41,7 @@ const getAqiValue = (aqiValue) => {
                 />
                 Air Quality Index
             </div>
-            <span className="text-right text-sm text-white lg:text-base">{getAqiValue(aqi)}</span>
+            <span className="text-right text-sm text-white lg:text-base">{getAqiValue(data?.main?.aqi)}</span>
             </div>
             <div className="flex items-center justify-between gap-4">
                     <div
@@ -68,7 +57,7 @@ const getAqiValue = (aqiValue) => {
                       Carbon Monoxide
                     </div>
                     <span className="text-right text-sm text-white lg:text-base"
-                      >{co} µg/m³</span>
+                      >{data?.components?.co} µg/m³</span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <div
@@ -84,7 +73,7 @@ const getAqiValue = (aqiValue) => {
                       Nitric Oxide
                     </div>
                     <span className="text-right text-sm text-white lg:text-base"
-                      >{no} ppm</span>
+                      >{data?.components?.no} ppm</span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <div
@@ -100,7 +89,7 @@ const getAqiValue = (aqiValue) => {
                       Nitrogen Dioxide
                     </div>
                     <span className="text-right text-sm text-white lg:text-base"
-                      >{no2} ppm</span>
+                      >{data?.components?.no2} ppm</span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <div
@@ -116,7 +105,7 @@ const getAqiValue = (aqiValue) => {
                       Ozone
                     </div>
                     <span className="text-right text-sm text-white lg:text-base"
-                      >{o3} µg/m³</span>
+                      >{data?.components?.datao3} µg/m³</span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <div
@@ -132,7 +121,7 @@ const getAqiValue = (aqiValue) => {
                       Sulfur Dioxide
                     </div>
                     <span className="text-right text-sm text-white lg:text-base"
-                      >{so2} ppm</span>
+                      >{data?.components?.so2} ppm</span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <div
@@ -145,7 +134,7 @@ const getAqiValue = (aqiValue) => {
                         width={50}
                         height={50}
                       />
-                      {pm2_5}
+                      {data?.components?.pm2_5}
                     </div>
                     <span className="text-right text-sm text-white lg:text-base">0.5 µg/m³</span>
                   </div>     

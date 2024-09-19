@@ -3,7 +3,7 @@ import Card from "./ui/Card";
 import Image from "next/image";
 
 export default async function WindCardItem({lat,lon}) {
-  const {speed,deg} =await getWindData(lat,lon);
+  const data =await getWindData(lat,lon);
 
   return (
     <Card>
@@ -16,8 +16,8 @@ export default async function WindCardItem({lat,lon}) {
             width={300}
             height={300}
           />
-          <h3 className="feature-title">{speed}</h3>
-          <span className="feature-name">{deg}</span>
+          <h3 className="feature-title">{data?.speed}</h3>
+          <span className="feature-name">{data?.deg}</span>
         </div>
     </Card>
   );

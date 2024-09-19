@@ -2,13 +2,7 @@ import { getTemperatureData } from "@/libs/weather.lib";
 import Card from "./ui/Card";
 
 export default async function TemperatureCardItem({lat,lon}) {
-    const {  
-      temp,
-      feels_like,
-      temp_min,
-      temp_max,
-     
-    } = await getTemperatureData(lat,lon);
+    const data = await getTemperatureData(lat,lon);
     
   return (
     <Card>
@@ -19,11 +13,11 @@ export default async function TemperatureCardItem({lat,lon}) {
             src="/icon_tempareture.png"
             alt="rain icon"
           />
-          <h3 className="feature-title">{temp}</h3>
+          <h3 className="feature-title">{data?.temp}</h3>
          
-          <span className="feature-name">Feels Like {feels_like}</span>
-          <h1 className="text-xs font-bold">Maximum-Temp: {temp_max}</h1>
-          <h1 className="text-xs font-black">Minimum-Temp: {temp_min}</h1>
+          <span className="feature-name">Feels Like {data?.feels_like}</span>
+          <h1 className="text-xs font-bold">Maximum-Temp: {data?.temp_max}</h1>
+          <h1 className="text-xs font-black">Minimum-Temp: {data?.temp_min}</h1>
         </div>
     </Card>
   );

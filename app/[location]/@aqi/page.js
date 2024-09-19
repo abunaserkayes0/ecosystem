@@ -1,7 +1,18 @@
+import { getResolvedLonLat } from "@/libs/location.lib";
 import AqiCardItem from "../Components/AqiCardItem";
+import NotFound from "../Components/ui/NotFoundPage";
 
-export default function Aqi({ params: { location }, searchParams: { latitude, longitude } }) {
+export default async function Aqi({ params: { location }, searchParams: { latitude, longitude } }) {
+    const currentLocation = await getResolvedLonLat(location, latitude, longitude)
+
     return (
-        <AqiCardItem lat={latitude} lon={longitude} />
+
+        currentLocation ? (
+            <AqiCardItem lat={latitude} lon={longitude} />
+        ) :
+            (
+                <NotFound />
+            )
+
     );
 }

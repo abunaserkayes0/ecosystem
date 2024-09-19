@@ -2,8 +2,7 @@ import { getWeatherData } from "@/libs/weather.lib";
 import Card from "./ui/Card";
 
 export default async function WeatherCardItem({lat,lon}) {
-  const {main,description} = await getWeatherData(lat,lon);
-  // console.log(data);
+  const data = await getWeatherData(lat,lon);
   
   return (
     <Card>
@@ -14,8 +13,8 @@ export default async function WeatherCardItem({lat,lon}) {
             src="/icon_rain.png"
             alt="rain icon"
             />
-        <h3 className="feature-title">{main}</h3>
-            <span className="feature-name">{description}</span>
+        <h3 className="feature-title">{data?.h3main}</h3>
+            <span className="feature-name">{data?.description}</span>
         </div>
     </Card>
   );
