@@ -1,5 +1,6 @@
 'use client';
 import getCurrentLocation from "@/libs/currentLocation";
+import { getLatLonList } from "@/libs/location.lib";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -26,7 +27,8 @@ export default function LocationDetector() {
 
                     // Fetch country name
                     try {
-                        const data = await getCurrentLocation(latitude,longitude)
+                       
+                        const data = await getLatLonList(latitude,longitude)
                         setIsCountryName(data.countryName);
 
                         // Wait until country name is set, then navigate
