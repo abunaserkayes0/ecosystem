@@ -1,5 +1,4 @@
 'use client';
-import getCurrentLocation from "@/libs/currentLocation";
 import { getLatLonList } from "@/libs/location.lib";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
